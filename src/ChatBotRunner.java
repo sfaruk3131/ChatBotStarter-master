@@ -27,7 +27,7 @@ public class ChatBotRunner
         else if(statement.toLowerCase().equals("teachbot"))
         {
             while (!statement.equals("Bye")) {
-                chatbot2.chatLoop(statement);
+                chatbot1.chatLoop(statement);
                 statement = in.nextLine();
             }
         }

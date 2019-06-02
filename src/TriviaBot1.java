@@ -24,8 +24,6 @@ public class TriviaBot1
 
 		while (!statement.equals("Bye"))
 		{
-
-
 			statement = in.nextLine();
 			//getResponse handles the user reply
 			System.out.println(getResponse(statement));
@@ -40,7 +38,8 @@ public class TriviaBot1
 	 */	
 	public String getGreeting()
 	{
-		return "Hi, what is up?";
+
+		return "Hello I'm TriviaBot. Please select the sport you would like to learn about. The sports are Soccer, Basketball, and Football";
 	}
 	
 	/**
@@ -54,49 +53,23 @@ public class TriviaBot1
 	{
 		String response = "";
 		
-		if (statement.length() == 0)
+		if (statement.equals("Soccer"))
 		{
-			response = "Say something, please.";
+            System.out.println("Would you like to learn about the rules or history? Type in the specific interest");
+            if(statement.equals("rules"))
+            {
+                response = "cool";
+            }
+
 		}
 
-		else if (findKeyword(statement, "no") >= 0)
-		{
-			response = "Why so negative?";
-                	emotion--;
-		}
-		
-		else if (findKeyword(statement, "levin") >= 0)
-		{
-			response = "More like LevinTheDream, amiright?";
-			emotion++;
-		}
-		else if (findKeyword(statement, "folwell") >= 0)
-		{
-			response = "Watch your backpacks, Mr. Folwell doesn't fall well.";
-			emotion++;
-		}
-		else if (findKeyword(statement, "goldman") >= 0)
-		{
-			response = "Go for the gold, man.";
-			emotion++;
-		}
-
-		// Response transforming I want to statement
-		else if (findKeyword(statement, "I want to", 0) >= 0)
-		{
-			response = transformIWantToStatement(statement);
-		}
-		else if (findKeyword(statement, "I want",0) >= 0)
-		{
-			response = transformIWantStatement(statement);
-		}	
-		else
-		{
-			response = getRandomResponse();
-		}
-		
 		return response;
+
 	}
+
+
+
+
 	
 	/**
 	 * Take a statement with "I want to <something>." and transform it into 
@@ -255,29 +228,7 @@ public class TriviaBot1
 	 * Pick a default response to use if nothing else fits.
 	 * @return a non-committal string
 	 */
-	private String getRandomResponse ()
-	{
-		Random r = new Random ();
-		if (emotion == 0)
-		{	
-			return randomNeutralResponses [r.nextInt(randomNeutralResponses.length)];
-		}
-		if (emotion < 0)
-		{	
-			return randomAngryResponses [r.nextInt(randomAngryResponses.length)];
-		}	
-		return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
-	}
+
 	
-	private String [] randomNeutralResponses = {"Interesting, tell me more",
-			"Hmmm.",
-			"Do you really think so?",
-			"You don't say.",
-			"It's all boolean to me.",
-			"So, would you like to go for a walk?",
-			"Could you say that again?"
-	};
-	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
-	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
-	
+
 }
